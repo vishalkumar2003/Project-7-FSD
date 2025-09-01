@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Breaker - The Array Heist</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-animation">
+        <div class="grid-overlay"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <div class="game-container">
+        <header class="game-header">
+            <div class="header-glow"></div>
+            <h1 class="game-title">
+                <span class="icon">⚡</span>
+                CODE BREAKER
+                <span class="subtitle">THE ARRAY HEIST</span>
+            </h1>
+            <p class="game-description">
+                Infiltrate the quantum vault by manipulating the digital array matrix
+            </p>
+        </header>
+
+        <div class="hud-panel">
+            <div class="hud-item timer-display">
+                <div class="hud-icon">⏱️</div>
+                <div class="hud-content">
+                    <span class="hud-label">TIME</span>
+                    <span class="hud-value" id="timer">60</span>
+                </div>
+            </div>
+
+            <div class="hud-item level-display">
+                <div class="hud-icon">🎯</div>
+                <div class="hud-content">
+                    <span class="hud-label">LEVEL</span>
+                    <span class="hud-value" id="level">1</span>
+                </div>
+            </div>
+
+            <div class="hud-item target-display">
+                <div class="hud-icon">🔍</div>
+                <div class="hud-content">
+                    <span class="hud-label">TARGET</span>
+                    <span class="hud-value" id="target-pattern">[?, ?, ?]</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="matrix-container">
+            <div class="matrix-header">
+                <span>QUANTUM ARRAY MATRIX</span>
+                <div class="matrix-status">
+                    <div class="status-indicator active"></div>
+                    <span>ONLINE</span>
+                </div>
+            </div>
+            <div class="array-wrapper">
+                <div id="array-display" class="array-display">
+                    <!-- Array cells will be generated here -->
+                </div>
+                <div class="array-scanline"></div>
+            </div>
+        </div>
+
+        <div class="control-station">
+            <div class="station-header">
+                <span>CONTROL STATION</span>
+                <div class="station-lights">
+                    <div class="light"></div>
+                    <div class="light"></div>
+                    <div class="light"></div>
+                </div>
+            </div>
+
+            <div class="controls-grid">
+                <div class="control-module insert-module">
+                    <div class="module-header">
+                        <span class="module-icon">➕</span>
+                        <span class="module-title">INSERT PROTOCOL</span>
+                    </div>
+                    <div class="module-content">
+                        <div class="input-row">
+                            <div class="input-wrapper">
+                                <label>INDEX</label>
+                                <input type="number" id="insert-index" min="0" max="9" value="0" class="cyber-input">
+                            </div>
+                            <div class="input-wrapper">
+                                <label>VALUE</label>
+                                <input type="number" id="insert-value" min="0" max="9" value="1" class="cyber-input">
+                            </div>
+                        </div>
+                        <button id="insert-btn" class="cyber-btn primary">
+                            <span>EXECUTE INSERT</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-module delete-module">
+                    <div class="module-header">
+                        <span class="module-icon">🗑️</span>
+                        <span class="module-title">DELETE PROTOCOL</span>
+                    </div>
+                    <div class="module-content">
+                        <div class="input-row">
+                            <div class="input-wrapper">
+                                <label>INDEX</label>
+                                <input type="number" id="delete-index" min="0" max="9" value="0" class="cyber-input">
+                            </div>
+                        </div>
+                        <button id="delete-btn" class="cyber-btn danger">
+                            <span>EXECUTE DELETE</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-module search-module">
+                    <div class="module-header">
+                        <span class="module-icon">🔍</span>
+                        <span class="module-title">PATTERN SCANNER</span>
+                    </div>
+                    <div class="module-content">
+                        <div class="input-row">
+                            <div class="input-wrapper full-width">
+                                <label>PATTERN SEQUENCE</label>
+                                <input type="text" id="search-pattern" placeholder="2,1,4" class="cyber-input">
+                            </div>
+                        </div>
+                        <button id="search-btn" class="cyber-btn warning">
+                            <span>INITIATE SCAN</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="control-module system-module">
+                    <div class="module-header">
+                        <span class="module-icon">⚙️</span>
+                        <span class="module-title">SYSTEM CONTROLS</span>
+                    </div>
+                    <div class="module-content">
+                        <div class="button-row">
+                            <button id="reset-btn" class="cyber-btn secondary">
+                                <span>RESET MATRIX</span>
+                            </button>
+                            <button id="new-game-btn" class="cyber-btn success">
+                                <span>NEW MISSION</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="feedback-terminal">
+            <div class="terminal-header">
+                <span>SYSTEM CONSOLE</span>
+                <div class="terminal-controls">
+                    <div class="control-dot minimize"></div>
+                    <div class="control-dot maximize"></div>
+                    <div class="control-dot close"></div>
+                </div>
+            </div>
+            <div class="terminal-content">
+                <div id="feedback" class="terminal-output">
+                    Welcome to the Array Heist. Mission: Locate and extract the target pattern.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-over-modal" id="game-over-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">MISSION STATUS</h2>
+            </div>
+            <div class="modal-body">
+                <p id="modal-message">Analyzing results...</p>
+            </div>
+            <div class="modal-footer">
+                <button id="play-again-btn" class="cyber-btn primary large">
+                    <span>RESTART MISSION</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
